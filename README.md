@@ -5,7 +5,7 @@
 
 <h3>#RU Language</h3><p>
 Это простенький бот, который был написан специально для моего сайта. 
-Прост в установке, о ней расскажу на строчке "".
+Прост в установке, о ней расскажу на строчке "27".
 Бот делался для тех людей, которые любят скачивать странички манги под мемы или т.п.
 На моём сайте присутствует манга 18+, поэтому не стоит ставить его на свой ПК/Сервер и читать подобную мангу, 
 если вы ещё не совершенно-летний, 
@@ -18,7 +18,7 @@
 <h3>#EN Language</h3>
 <p>
 This is a simple bot that was written specifically for my site. 
-Easy to install, I'll tell you about it on the line "".
+Easy to install, I'll tell you about it on the line "27".
 The bot was made for those people who like to download manga pages for memes or the like.
 There is a manga 18+ on my site, so you should not put it on your PC/Server and read similar manga,
 if you are not yet a completely-year-old,
