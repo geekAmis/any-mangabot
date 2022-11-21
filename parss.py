@@ -1,6 +1,6 @@
 import requests
 from bs4 import BeautifulSoup as bs 
-import json
+import json, random
 
 
 
@@ -26,8 +26,12 @@ def get_opis(soup):
 	return soup.find('div',class_='anime__details__text').find('p').text
 
 def get_data(page):
-	soup = get_page(page)
-	return [get_img(soup),get_names(soup),get_rate(soup),get_opis(soup)]
+	try:
+		soup = get_page(page)
+
+		return [get_img(soup),get_names(soup),get_rate(soup),get_opis(soup)]
+	except:
+		return ['https://any-more.ru/mang.png',['Не найдено','Not FOUND'],0,'ERROR CODE: 404']
 
 #--------------------------------------------
 
@@ -40,3 +44,33 @@ def pars_imgs(soup):
 def pars_data(page,artic):
 	soup = pars_page(page,artic)
 	return pars_imgs(soup)
+
+def search_soup(s="",redirect_to="https://any-more.ru/categories.php"):
+	data = {"s":s,"redirect_to": redirect_to}
+	return bs(requests.post('https://any-more.ru/search/',data=data).text,'html5lib')
+
+def search_json(soup):
+	data = []
+	for i in soup.find_all('div',class_='col-lg-4 col-md-6 col-sm-6'):
+		data.append(
+				{
+					"num": i.find('a').get('href').split('?manga=1-')[1],
+					"img": i.find('div',class_='product__item__pic set-bg').get('data-setbg'),
+					"name": i.find('h5').text,
+					"ep": i.find('div',class_='ep').text,
+					"view": i.find('div',class_='view').text
+				}
+			)
+	return data
+
+def search_data(text=''):
+	return search_json(search_soup(s=text))
+
+def get_rand():
+	soup = bs(requests.get('https://any-more.ru').text,'html5lib').find('div',class_='product__sidebar__view')
+	ran = random.randint(1,int(soup.find('a',class_='primary-btn').get('href').split('categories.php?page=')[1])*10+5)
+	if get_data(ran)[0] != 'https://any-more.ru/mang.png':  return ran
+	else:
+		print(f'Error ran - {ran}')
+		return get_rand()
+
