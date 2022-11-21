@@ -1,6 +1,6 @@
 <img src="https://any-more.ru/mang.svg">
 
-<h1>any-mangabot</h1>
+<h1>Any-MangaRobot</h1>
 <h2><b>It is bot for read manga in Telegram (Pars images). <i>WITH OUT DATA BASE!</i></b></h2>
 
 <h3>#RU Language</h3><p>
